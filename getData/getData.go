@@ -1,17 +1,31 @@
 //functions in here getthedata from espn and parse it
-package getdata
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"net/http"
+)
 
 //Get will get the data from espn and return a struct of info we want. What is that info?
-func Get(id string) {
+func main() {
+	// want to return EspnData.Centre.Match.CurrentSummary
+	resp, err := http.Get(`https://www.espncricinfo.com/matches/engine/match/1225248.json`)
 
-}
+	if err != nil {
+		fmt.Println(err)
+	}
 
-type DisplayData struct {
-	CurrentBattingTeam  string
-	TotalInningsRuns    string
-	TotalInningsWickets string
-	IsTrailing          bool
-	RunsTrailLead       string
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Println(string((body)))
+	// make http call
 }
 
 type EspnData struct {
