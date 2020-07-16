@@ -6,6 +6,14 @@ func Get(id string) {
 
 }
 
+type DisplayData struct {
+	CurrentBattingTeam  string
+	TotalInningsRuns    string
+	TotalInningsWickets string
+	IsTrailing          bool
+	RunsTrailLead       string
+}
+
 type EspnData struct {
 	Centre struct {
 		Batting []struct {
