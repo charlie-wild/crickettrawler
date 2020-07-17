@@ -1,5 +1,7 @@
 //functions in here getthedata from espn and parse it
-package main
+// functions:
+// getData
+package getdata
 
 import (
 	"fmt"
@@ -8,7 +10,7 @@ import (
 )
 
 //Get will get the data from espn and return a struct of info we want. What is that info?
-func main() {
+func Get() {
 	// want to return EspnData.Centre.Match.CurrentSummary
 	resp, err := http.Get(`https://www.espncricinfo.com/matches/engine/match/1225248.json`)
 
