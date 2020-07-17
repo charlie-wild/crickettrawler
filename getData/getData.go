@@ -4,15 +4,35 @@
 package getdata
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 )
 
+var Client HTTPClient
+
+//HTTPClient interface
+type HTTPClient interface {
+	Do(req *http.Request) (*http.Response, error)
+}
+
+//sets client to instance of httpclient when it initialises. Init function runs once
+//when package is imported
+func init() {
+	Client = &http.Client{}
+}
+
 //Get will get the data from espn and return a struct of info we want. What is that info?
-func Get() {
+func Get() string {
+
 	// want to return EspnData.Centre.Match.CurrentSummary
-	resp, err := http.Get(`https://www.espncricinfo.com/matches/engine/match/1225248.json`)
+
+	client := Client
+
+	req, err := http.NewRequest("GET", `https://www.espncricinfo.com/matches/engine/match/1225248.json`, nil)
+
+	resp, err := client.Do(req)
 
 	if err != nil {
 		fmt.Println(err)
@@ -26,8 +46,12 @@ func Get() {
 		fmt.Println(err)
 	}
 
-	fmt.Println(string((body)))
-	// make http call
+	s := new(EspnData)
+
+	err = json.Unmarshal(body, &s)
+
+	return s.Match.CurrentSummary
+
 }
 
 type EspnData struct {
