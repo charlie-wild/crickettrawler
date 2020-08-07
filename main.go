@@ -3,7 +3,7 @@ package main
 //test
 
 import (
-	"github.com/charlie-wild/crickettrawler/blob/master/getdata"
+	"repos/crickettrawler/getdata"
 )
 
 func main() {

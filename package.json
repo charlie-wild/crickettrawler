@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/charlie-wild/crickettrawler/issues"
   },
-  "homepage": "https://github.com/charlie-wild/crickettrawler#readme"
+  "homepage": "https://github.com/charlie-wild/crickettrawler#readme",
+  "dependencies": {
+    "serverless": "^1.78.1"
+  }
 }
