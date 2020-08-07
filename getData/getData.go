@@ -27,7 +27,7 @@ func Get() string {
 
 	client := Client
 
-	req, err := http.NewRequest("GET", `https://www.espncricinfo.com/matches/engine/match/1225248.json`, nil)
+	req, err := http.NewRequest("GET", `https://www.espncricinfo.com/matches/engine/match/1198241.json`, nil)
 
 	resp, err := client.Do(req)
 
