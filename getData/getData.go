@@ -1,6 +1,3 @@
-//functions in here getthedata from espn and parse it
-// functions:
-// getData
 package getdata
 
 import (
